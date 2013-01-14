@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>alanmoo-et-al.adium</string>
+	<key>connections</key>
+	<dict>
+		<key>01A06461-9DD7-44E5-B205-63FC258A0D23</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>27E5CCA7-265F-4C03-902A-98E486BA8437</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>295C8F32-8FE2-4AAC-A41F-56D2F588C5B7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>78011191-AB61-4FA2-837C-77769298D9A1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>A3AE92A8-7014-41C9-87B7-65C78DC47105</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C608103C-677C-43FA-A7A5-7372A63B400C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>D215F05F-EA0D-4E96-8037-40183694FE0C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C273365F-30C5-40E5-8661-3D835AEF2DD0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>F2F103BF-A59E-41D8-8239-3D48CC382A7B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E38A0122-3795-4714-81E2-07CAFD9BD878</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Uris Ducats, Joel Gilman, Sebastian Hansack, Artem Tomilov, Alan Mooiman</string>
+	<key>description</key>
+	<string>Send Adium messages and set away status</string>
+	<key>name</key>
+	<string>Adium controls</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>on</string>
+				<key>subtext</key>
+				<string>Brings Adium online</string>
+				<key>text</key>
+				<string>Adium - Go Online</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>295C8F32-8FE2-4AAC-A41F-56D2F588C5B7</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+try
+	tell application "Adium" to go online
+on error
+	beep
+end try
+end alfred_script</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>78011191-AB61-4FA2-837C-77769298D9A1</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>back</string>
+				<key>subtext</key>
+				<string>Set Adium to available</string>
+				<key>text</key>
+				<string>Adium- Available</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>01A06461-9DD7-44E5-B205-63FC258A0D23</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>chat</string>
+				<key>subtext</key>
+				<string>Open a new or existing chat, send a message after :</string>
+				<key>text</key>
+				<string>Chat person: message</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>D215F05F-EA0D-4E96-8037-40183694FE0C</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>-- USAGE
+-- away :: Set status to "Away"
+-- away l :: Set status to "lunch" and start screen saver
+-- away m :: Set status to "meeting" and start screen saver
+-- away p :: Set status to "on the phone" and start
+--   screen saver
+-- away d :: Set status to "do no disturb" and start
+--   screen saver
+-- away b :: Set status to "Be right back" and start screen saver
+-- away i :: Set status to invisible
+-- away my custom message :: Set status to "my custom
+--   message" and start screen saver
+--
+-- Works best if you have set your computer to lock on
+-- screen saver. System Preferences &gt; Security &amp; Privacy
+-- Personally I have mine set to "5 seconds" to prevent
+-- accidental screen saver lock-outs.
+-- This script created by Joel Gillman
+
+on alfred_script(q)
+	setAdiumAway(q)
+end alfred_script
+
+on setAdiumAway(txt)
+	if txt is equal to "a" then
+		setAway("Away")
+		startScreensaver()
+
+	else if txt is equal to "l" then
+		setAway("Lunch")
+		startScreensaver()
+
+	else if txt is equal to "b" then
+		setAway("Be right back")
+		startScreensaver()
+
+	else if txt is equal to "m" then
+		setAway("meeting")
+		startScreensaver()
+
+	else if txt is equal to "p" or txt is equal to "phone" then
+		setAway("on the phone")
+		startScreensaver()
+
+	else if txt is equal to "dnd" then
+		setAway("do not disturb")
+		startScreensaver()
+
+	else if txt is equal to "i" or txt is equal to "invisible" then
+		tell application "Adium" to go invisible
+
+	else if txt is equal to "back" then
+		tell application "Adium" to go available
+
+	else
+		setAway(txt)
+		startScreensaver()
+	end if
+end setAdiumAway
+
+on setAway(txt)
+	tell application "Adium" to go away with message txt
+end
+
+on startScreensaver()
+	do shell script "open -a ScreenSaverEngine"
+end startScreensaver</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>C608103C-677C-43FA-A7A5-7372A63B400C</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>off</string>
+				<key>subtext</key>
+				<string>Tell Adium to go offline</string>
+				<key>text</key>
+				<string>Adium - Offline</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>F2F103BF-A59E-41D8-8239-3D48CC382A7B</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>#ver 2.1
+on alfred_script(q)
+
+	set input to "" &amp; q
+	set msg to ""
+
+	#get the name portion of the string
+	set AppleScript's text item delimiters to {":"}
+	set chatParts to (every text item in input) as list
+	set user to item 1 of chatParts
+
+	#get the message portion of the string
+	set AppleScript's text item delimiters to {""}
+	if (length of input &gt; (length of user) + 1) then
+		set start to the (length of the (user &amp; ":")) + 1
+		set msg to text start thru end of input
+	end if
+
+	tell application "System Events"
+		set theCount to count (every process whose name contains "Adium")
+	end tell
+
+	if theCount = 0 then
+		tell application "Adium"
+			activate
+		end tell
+		delay 5
+	end if
+
+	tell application "Adium"
+		set user to first contact whose (display name contains user)
+
+		if not (exists (chats whose contacts contains user)) then
+			if not (exists (first chat window)) then
+				if (length of msg is greater than 0) and (user is not equal to msg) then
+					tell account of user to (make new chat with contacts {user} with new chat window)
+					send (first chat whose contacts contains user) message msg
+				else
+					tell account of user to (make new chat with contacts {user} with new chat window)
+				end if
+			else
+				set existing_window to first chat window
+				if (length of msg is greater than 0 and user is not equal to msg) then
+					tell account of user to (make new chat with contacts {user} in window existing_window)
+					send (first chat whose contacts contains user) message msg
+				else
+					tell account of user to (make new chat with contacts {user} in window existing_window)
+				end if
+			end if
+		else
+			if (length of msg is greater than 0 and user is not equal to msg) then
+				send (first chat whose contacts contains user) message msg
+			end if
+		end if
+		tell (first chat whose contacts contains user) to become active
+		tell (first chat whose contacts contains user) to activate
+	end tell
+
+end alfred_script</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>C273365F-30C5-40E5-8661-3D835AEF2DD0</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+try
+	tell application "Adium" to go available
+on error
+	beep
+end try
+end alfred_script</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>27E5CCA7-265F-4C03-902A-98E486BA8437</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+try
+	tell application "Adium" to go offline
+on error
+	beep
+end try
+end alfred_script</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>E38A0122-3795-4714-81E2-07CAFD9BD878</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>away</string>
+				<key>subtext</key>
+				<string>Set to away or with arguments for custom message</string>
+				<key>text</key>
+				<string>Set Adium away message</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>A3AE92A8-7014-41C9-87B7-65C78DC47105</string>
+		</dict>
+	</array>
+	<key>uidata</key>
+	<dict>
+		<key>01A06461-9DD7-44E5-B205-63FC258A0D23</key>
+		<dict>
+			<key>ypos</key>
+			<real>270</real>
+		</dict>
+		<key>27E5CCA7-265F-4C03-902A-98E486BA8437</key>
+		<dict>
+			<key>ypos</key>
+			<real>270</real>
+		</dict>
+		<key>295C8F32-8FE2-4AAC-A41F-56D2F588C5B7</key>
+		<dict>
+			<key>ypos</key>
+			<real>510</real>
+		</dict>
+		<key>78011191-AB61-4FA2-837C-77769298D9A1</key>
+		<dict>
+			<key>ypos</key>
+			<real>510</real>
+		</dict>
+		<key>A3AE92A8-7014-41C9-87B7-65C78DC47105</key>
+		<dict>
+			<key>ypos</key>
+			<real>150</real>
+		</dict>
+		<key>C273365F-30C5-40E5-8661-3D835AEF2DD0</key>
+		<dict>
+			<key>ypos</key>
+			<real>30</real>
+		</dict>
+		<key>C608103C-677C-43FA-A7A5-7372A63B400C</key>
+		<dict>
+			<key>ypos</key>
+			<real>150</real>
+		</dict>
+		<key>D215F05F-EA0D-4E96-8037-40183694FE0C</key>
+		<dict>
+			<key>ypos</key>
+			<real>30</real>
+		</dict>
+		<key>E38A0122-3795-4714-81E2-07CAFD9BD878</key>
+		<dict>
+			<key>ypos</key>
+			<real>390</real>
+		</dict>
+		<key>F2F103BF-A59E-41D8-8239-3D48CC382A7B</key>
+		<dict>
+			<key>ypos</key>
+			<real>390</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
