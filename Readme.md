@@ -7,9 +7,9 @@ Original Plugins were from [Uirs Dacosta](http://urisdacosta.tumblr.com/post/137
 I integrated them together for Alfred 2. This is kind of forked from [this repo](https://github.com/Detmud/Alfred-Extension---Adium-Chat) but due to the differences in the way Alfred 2 handles workflows, I wanted to start it from scratch to make this easier to collaborate on.
 
 ###Installing
-Clone this repo directly to `~/Library/Application Support/Alfred 2/Alfred.alfredpreferences/workflows`
+Download the zip from Github and change the extension to `.alfredworkflow`. Double click to install.
 
-If that doesn't work, download the zip from Github and change the extension to `.alfredworkflow`.
+**This requires Alfred 2, which is currently in Beta for Mega Supporters**
 
 ### Syntax 
 **chat display_name [: message]**
