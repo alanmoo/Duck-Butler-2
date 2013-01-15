@@ -73,29 +73,10 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>on</string>
-				<key>subtext</key>
-				<string>Brings Adium online</string>
-				<key>text</key>
-				<string>Adium - Go Online</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>295C8F32-8FE2-4AAC-A41F-56D2F588C5B7</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
 try
-	tell application "Adium" to go online
+	tell application "Adium" to go offline
 on error
 	beep
 end try
@@ -104,7 +85,26 @@ end alfred_script</string>
 			<key>type</key>
 			<string>alfred.workflow.action.applescript</string>
 			<key>uid</key>
-			<string>78011191-AB61-4FA2-837C-77769298D9A1</string>
+			<string>E38A0122-3795-4714-81E2-07CAFD9BD878</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>away</string>
+				<key>subtext</key>
+				<string>Set to away or with arguments for custom message</string>
+				<key>text</key>
+				<string>Set Adium away message</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>A3AE92A8-7014-41C9-87B7-65C78DC47105</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -312,6 +312,42 @@ end alfred_script</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>on</string>
+				<key>subtext</key>
+				<string>Brings Adium online</string>
+				<key>text</key>
+				<string>Adium - Go Online</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>295C8F32-8FE2-4AAC-A41F-56D2F588C5B7</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+try
+	tell application "Adium" to go online
+on error
+	beep
+end try
+end alfred_script</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>78011191-AB61-4FA2-837C-77769298D9A1</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(q)
 try
@@ -325,42 +361,6 @@ end alfred_script</string>
 			<string>alfred.workflow.action.applescript</string>
 			<key>uid</key>
 			<string>27E5CCA7-265F-4C03-902A-98E486BA8437</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>applescript</key>
-				<string>on alfred_script(q)
-try
-	tell application "Adium" to go offline
-on error
-	beep
-end try
-end alfred_script</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.applescript</string>
-			<key>uid</key>
-			<string>E38A0122-3795-4714-81E2-07CAFD9BD878</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>keyword</key>
-				<string>away</string>
-				<key>subtext</key>
-				<string>Set to away or with arguments for custom message</string>
-				<key>text</key>
-				<string>Set Adium away message</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>A3AE92A8-7014-41C9-87B7-65C78DC47105</string>
 		</dict>
 	</array>
 	<key>uidata</key>
@@ -417,6 +417,6 @@ end alfred_script</string>
 		</dict>
 	</dict>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/alanmoo/Duck-Butler-2</string>
 </dict>
 </plist>
