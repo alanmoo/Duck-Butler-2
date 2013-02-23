@@ -44,6 +44,9 @@ Set status to invisible
 **away my custom message**
 Set status to "my custom message" and start screen saver
 
+**back**
+Set status to Available
+
 Works best if you have set your computer to lock on screen saver. System Preferences > Security & Privacy Personally I have mine set to "5 seconds" to prevent accidental screen saver lock-outs.
 
 
